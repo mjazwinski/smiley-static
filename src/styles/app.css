@@ -1,0 +1,126 @@
+:root {
+  --app-max-width: 480px;
+  --counter-button-height: clamp(4.5rem, 11vh, 6rem);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.app-shell {
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.app-header {
+  padding-top: env(safe-area-inset-top);
+}
+
+.app-column {
+  width: 100%;
+  max-width: var(--app-max-width);
+  margin-inline: auto;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+/* Name header */
+.counter-name {
+  font-size: clamp(1.5rem, 7vw, 2.25rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.counter-name-button {
+  min-height: 3rem;
+}
+
+.counter-name-edit-icon {
+  font-size: 1rem;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+
+.counter-name-input {
+  font-size: clamp(1.25rem, 6vw, 1.75rem);
+  font-weight: 700;
+}
+
+/* Count */
+.counter-display {
+  min-height: 0;
+}
+
+.counter-value {
+  font-size: clamp(4.5rem, 24vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+/* Buttons */
+.counter-controls {
+  padding-block: 1.5rem;
+}
+
+.counter-button {
+  min-height: var(--counter-button-height);
+  border-radius: 1.25rem;
+  font-size: clamp(2.25rem, 10vw, 3rem);
+  line-height: 1;
+  box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.15);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+}
+
+.counter-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 0.1rem 0.3rem rgb(0 0 0 / 0.2);
+}
+
+.counter-reset-button {
+  margin-top: 0.75rem;
+}
+
+.dialog-button {
+  min-height: 3.25rem;
+  touch-action: manipulation;
+}
+
+/* Landscape phones and larger: buttons in a row */
+@media (min-width: 576px) {
+  :root {
+    --app-max-width: 720px;
+  }
+
+  .counter-reset-button {
+    margin-top: 0;
+    margin-left: 0.75rem;
+  }
+}
+
+/* Landscape phones are short: tighten vertical spacing */
+@media (max-height: 500px) {
+  :root {
+    --counter-button-height: 4rem;
+  }
+
+  .counter-value {
+    font-size: clamp(3.5rem, 20vh, 6rem);
+  }
+
+  .counter-controls {
+    padding-block: 0.75rem;
+  }
+}
